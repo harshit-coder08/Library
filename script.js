@@ -23,6 +23,10 @@ function displayBooks() {
     
     for (let i=0; i<myLibrary.length;i++){
         const card = document.createElement("div");
+        card.classList.add("card");
+
+        const buttonDiv =  document.createElement("div");
+        buttonDiv.classList.add("card_buttons");
         
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
@@ -33,8 +37,10 @@ function displayBooks() {
         card.textContent = `Title: ${myLibrary[i].title}, Author: ${myLibrary[i].author}, Pages: ${myLibrary[i].pages}, Read: ${myLibrary[i].read}`;
         removeButton.id = `${myLibrary[i].id}`;
         shelf.appendChild(card); // makes card the child node of shelf even we didn't define this beforehand
-        card.appendChild(removeButton);
-        card.appendChild(toggleButton);
+        buttonDiv.appendChild(toggleButton);
+        buttonDiv.appendChild(removeButton);
+        card.appendChild(buttonDiv);
+        
 
         removeButton.addEventListener("click", ()=>{
             for (const x of myLibrary) {
